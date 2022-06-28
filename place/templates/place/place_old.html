@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>python GPS</title>
+</head>
+<body>
+    {% extends 'main.html' %}
+
+    {% block content %}
+
+    <style>
+        .place-container{
+        display: grid;
+        grid-template-columns: 3fr 1fr;
+        }
+    </style>
+
+    <div class="place-container">
+        <div>
+        <div>
+         <a href="{% url 'home' %}">Home Page</a>
+        <h3>Name: {{place.name}}</h3>
+        <p> Description: {{place.description}}</p>
+    </div>
+
+    <div class="comment-wrapper">
+        <hr>
+        <h2>Conversation</h2>
+        {% for comment in comments %}
+        <div>
+            <h4>{{comment.order_hotel}}</h4>
+            <small>@{{comment.user}} {{comment.create|timesince}} ago</small>
+            {% if request.user == comment.user %}
+            <a href="{% url 'delete-comment' comment.id %}">Delete</a>
+            {% endif %}
+        </div>
+        <hr>
+        {% endfor %}
+    </div>
+
+    {% if request.user.is_authenticated %}
+    <div class="comment-form">
+        <form method="POST" action="">
+            {% csrf_token %}
+            <input type="text" name="comment" placeholder="Leave the Message Here" />
+        </form>
+    </div>
+        </div>
+
+        <div>
+            <h3>Participants</h3>
+            <hr>
+            {% for user in participants %}
+            <div>
+                <p>@{{user.username}}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+    {% endblock content %}
+</body>
+</html>

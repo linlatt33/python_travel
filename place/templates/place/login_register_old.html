@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Python Travel</title>
+</head>
+<body>
+{% extends 'main.html' %}
+
+{% block content %}
+
+{% if page == 'login' %}
+    <div>
+        <h1>Login</h1>
+        <form method="POST" action="">
+            {% csrf_token %}
+            <label>Username:</label>
+            <input type="text" name="username" placeholder="Enter Your Username" />
+
+            <label>Password:</label>
+            <input type="password" name="password" placeholder="Enter Your Password" />
+
+            <input type="submit" value="Login" />
+        </form>
+        <p>
+            Create Your Account Here
+            <a href="{% url 'register' %}">Sign Up</a>
+        </p>
+    </div>
+
+{% else %}
+
+    <div>
+        <h1>Register</h1>
+        <form method="POST" action="">
+            {% csrf_token %}
+
+            {{registerform.as_p}}
+            <input type="submit" value="Register" />
+        </form>
+        <p>
+            Have You Already Created Your Account
+            <a href="{% url 'login' %}">Login</a>
+        </p>
+    </div>
+{% endif %}
+
+{% endblock %}
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>python GPS</title>
+</head>
+<body>
+
+    {% extends 'main.html' %}
+
+    {% block content %}
+
+    <style>
+        .home-container{
+        display: grid;
+        grid-template-columns: 1fr 3fr 1fr;
+        }
+    </style>
+
+    <div class="home-container">
+        <div>
+            {% include 'place/topics.html' %}
+        </div>
+        <div>
+            <a href="{% url 'create-place' %}">Create Place</a>
+            <h1>Welcome From Our GPS List Website</h1>
+            <div>
+                {% include 'place/feed.html' %}
+            </div>
+
+        <div>
+            {% include 'place/activity.html' %}
+        </div>
+
+    </div>
+    <hr>
+    {% endblock content %}
+    </div>
+</body>
+</html>

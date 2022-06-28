@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Python GPS</title>
+</head>
+<body>
+
+{% extends 'main.html' %}
+{% block content %}
+
+    <style>
+        .profile-container{
+            display: grid;
+            grid-template-columns: 1fr 3fr 1fr;
+        }
+    </style>
+
+<div class="profile-container">
+
+    <div>
+        {% include 'place/topics.html' %}
+    </div>
+<div>
+
+<h1 align="center">{{user.username}}</h1>
+
+    <div>
+        {% include 'place/feed.html' %}
+    </div>
+
+    <div>
+        {% include 'place/activity.html' %}
+    </div>
+</div>
+
+</div>
+{% endblock %}
+</body>
+</html>

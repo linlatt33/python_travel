@@ -1,0 +1,49 @@
+{% extends 'main.html' %}
+
+{% block content %}
+  <main class="create-room layout">
+    <div class="container">
+        <div class="layout__body">
+
+          <form class="form" action="" method="POST">
+            {% csrf_token %}
+
+            <div class="form__group">
+              <label>Trip type</label>
+              <input required type="text" value="{{place.topic.name}}" name="topic" list="topic-list" />
+              <datalist id="topic-list">
+                {% for topic in topics %}
+                <option value="{{topic.name}}">{{topic.name}}</option>
+                {% endfor %}
+              </datalist>
+            </div>
+
+            <div class="form__group">
+              <label>Place Name</label>
+              {{form.name}}
+            </div>
+
+            <div class="form__group">
+              <label>Located</label>
+              {{form.located}}
+            </div>
+
+            <div class="form__group">
+              <label>Hotel Name</label>
+              {{form.hotel_name}}
+            </div>
+
+            <div class="form__group">
+              <label>Description</label>
+              {{form.description}}
+            </div>
+
+            <div class="form__action">
+              <a class="btn btn--dark" href="{% url 'home' %}">Cancel</a>
+              <button class="btn btn--main" type="submit">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+  </main>
+{% endblock %}

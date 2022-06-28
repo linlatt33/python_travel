@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Python GPS</title>
+</head>
+<body>
+{% extends 'main.html' %}
+
+{% block content %}
+<div>
+    <h1 align="center">Create and Update Form</h1>
+</div>
+    <div align="center">
+        <form method="POST" action="">
+            {% csrf_token %}
+            {{form.as_p}}
+            <input type="submit" value="Submit" />
+        </form>
+    </div>
+</body>
+{% endblock content %}
+</html>
